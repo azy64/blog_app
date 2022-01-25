@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>page show</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
-
-  <body>
-    <%= yield %>
-    <h1>USER PAGE SHOW </h1>
-    <p>Single User</p>
-  </body>
-</html>
+<section>
+  <%= render partial: 'user_display', locals: {user: @user} %>
+  <div class="bio">
+    <h4>Bio</h4>
+    <p><%= @user.bio %></p>
+  </div>
+  <div class="posts">
+    <%= render @user.posts %>
+  </div>
+</section>

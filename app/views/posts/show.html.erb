@@ -1,18 +1,11 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>page show</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
-
-  <body>
-    <%= yield %>
-    <h1>PAGE SHOW </h1>
-    <p>Single Post</p>
-  </body>
-</html>
+<section>
+  <div class="post">
+    <h2><%= @post.title %></h2>
+    <p><%= @post.text %></p>
+    <div class='text-end'>
+       <b>comments: <%= @post.comments_counter %>, Likes: <%= @post.likes_counter%> </b>
+    </div>
+  </div>
+  <div class="comments">
+    <%= render @post.comments %>
+  </div>
