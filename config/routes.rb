@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/users/(.:format)', to: 'users#index', as: 'users'
   get '/users/:user_id/posts(.:format)', to: 'posts#index', as: 'user_posts'
   get '/users/:user_id/posts/:id(.:format)', to: 'posts#show', as: 'user_post'
+  post '/users/:user_id/posts/new', to: 'post#new', as: 'new_post'
 
   # Defines the root path route ("/")
   # root "articles#index"
