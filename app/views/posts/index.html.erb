@@ -1,5 +1,8 @@
 <section>
-  <%= render partial: 'user_display', locals: {user: @user} %>
+<% if flash[:error] %>
+<div><%= flash[:error] %></div>
+<% end %>
+  <%= render partial: 'shared/user_display', locals: {user: @user} %>
   <div class="posts">
     <%= render @posts %>
   </div>

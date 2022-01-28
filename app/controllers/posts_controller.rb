@@ -1,25 +1,30 @@
 # class for Posts entity
 class PostsController < ApplicationController
-  def index; end
+  def index
+    @user = current_user
+    @posts = @user.posts
+  end
 
   def show; end
 
   def new
-    post = Posts.new
-    render :new, locals: { post: post }
+    @post = Post.new
+    # render :new, locals: { post: post }
   end
 
   def create
-    post = current_user.posts.new(post_params)
-    authorize! :create, post
     @user = current_user
-    @posts = @user.posts
-    if post.save
+    # @post = current_user.posts.create(title: params[:tile], text: params[:text])
+    @post = Post.new(params.require(:post).permit(:title, :text))
+    # post.users = user
+    # post.users_id = user.id
+    @user.posts.push(@post)
+    if @post.save 
       flash[:success] = 'Created New Post succesfully'
-      redirect_to user_posts_url
+      redirect_to action: 'show', controller: 'users', id: @user.id
     else
       flash.now[:fail] = 'Failed to Create New Post'
-      render :new, locals: { post: post }
+      render :new, locals: { post: @post }
     end
   end
 end
