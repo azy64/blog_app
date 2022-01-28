@@ -6,7 +6,7 @@ class LikesController < ApplicationController
     @user.likes.push(@like)
     @post.likes.push(@like)
     if @like.save
-        flash.now[:success] = 'success to add like'
+      flash.now[:success] = 'success to add like'
     else
       flash.now[:error] = 'fail to add like'
     end

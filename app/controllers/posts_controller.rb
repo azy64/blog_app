@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     # post.users = user
     # post.users_id = user.id
     @user.posts.push(@post)
-    if @post.save 
+    if @post.save
       flash[:success] = 'Created New Post succesfully'
       redirect_to action: 'show', controller: 'users', id: @user.id
     else
