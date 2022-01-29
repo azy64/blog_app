@@ -6,7 +6,6 @@ class User < ApplicationRecord
   has_many :likes
 
   def first_three
-    # post.order(created_at: :desc).limit(3)
     posts.order(created_at: :desc).limit(3)
   end
 end
