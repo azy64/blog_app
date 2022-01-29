@@ -4,9 +4,9 @@
         <img src="<%= user.photo %>">
       </div>
       <div class="info">
-      <h2><%= user.&name %> </h2>
+      <h2><%= user.id %> <%= user.name %> </h2>
       <div class='text-end'>
-       <b>Number of posts: <%= user.posts_counter %> </b>
+       <b class="p">Number of posts: <%= user.posts.length %> </b>
       </div>
       </div>
     </div>

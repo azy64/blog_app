@@ -1,5 +1,9 @@
 <section>
-  <%= render partial: 'user_display', locals: {user: @user} %>
+ <% if flash[:success] %>
+    <div class="alert"><%= flash[:alert] %></div>
+<% end %>
+<%= link_to 'New Post', new_post_path %>
+  <%= render partial: 'shared/user_display', locals: { user: @user } %>
   <div class="bio">
     <h4>Bio</h4>
     <p><%= @user.bio %></p>

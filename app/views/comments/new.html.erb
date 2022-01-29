@@ -1,0 +1,15 @@
+<h1>NEW COMMENT</h1>
+<% if flash[:fail]%>
+    <div><%= flash[:fail] %> </div>
+<% end %>
+<%= form_with model: @comment, url: create_comment_path, 
+method: :post, scope: :comment, local: true   do |form| %>
+<%= form.label 'Your comment:' %>
+<div>
+<%= form.hidden_field :post_id, value: @id %>
+<%= form.text_area :text%>
+</div>
+<div>
+<%= form.submit 'Save your comment'%>
+</div>
+<% end %>
