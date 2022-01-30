@@ -13,15 +13,15 @@ RSpec.describe 'Users', type: :request do
 
     it 'should include Number of posts' do
       get users_path
-      expect(response.body).to_not include('Number of posts')
+      expect(response.body).to include('Number of posts')
     end
   end
   describe 'GET #show' do
-    before(:each) { get user_path id: 1 }
-
-    #  it 'should render the show template ' do
-    #    expect(response).to render_template(:show)
-    # end
+    user = User.create('name' => 'Azaria', 'bio' => 'The Best', 'photo' => '', 'postsCounter' => 0)
+    before(:each) { get user_path id: user.id }
+    it 'should render the show template ' do
+      expect(response).to render_template(:show)
+    end
 
     # it 'should include the word Bio' do
     # expect(response).to include('Bio')
